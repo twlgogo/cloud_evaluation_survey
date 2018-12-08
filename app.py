@@ -14,7 +14,17 @@ def html_get():
     f = open("vectors.txt", "a+")
     f.write(matrix)
     f.write("\n")
+    f.close()
     return "ok"
+
+@app.route('/vectors.txt')
+def html_vectors():
+    if not os.path.exists("vectors.txt"):
+        return "No vectors.txt"
+    f = open("vectors.txt", "r")
+    body = "\n".join(f.readlines())
+    f.close()
+    return body
 
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 8000.

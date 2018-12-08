@@ -162,8 +162,14 @@
             }
         }
         fetch(`/post?matrix=${s}`)
-            .then(data => alert(`提交成功`))
-            .catch(error => alert(`提交成功`))
+            .then(data => {
+                if (data.status) {
+                    alert(`提交成功`)
+                } else {
+                    alert(`提交失败`)
+                }
+            })
+            .catch(error => alert(`提交失败`))
     }
 </script>
 </html>
