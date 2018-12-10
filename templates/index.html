@@ -53,6 +53,17 @@
     margin-right: auto;
     padding: 10px;
 }
+.reset-container {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+}
+.reset-button {
+    background-color: rgba(0, 0, 0, 0.0);
+    color: rgba(0, 0, 0, 0.0);
+    border: none;
+}
 </style>
 <body>
     <div class="center-text">
@@ -109,6 +120,9 @@
     </div>
     <div class="submit-container">
         <button id="submit">提交</button>
+    </div>
+    <div class="reset-container">
+        <button id="reset" class="reset-button">重置</button>
     </div>
 </body>
 <script>
@@ -170,6 +184,11 @@
                 }
             })
             .catch(error => alert(`提交失败`))
+    }
+
+    const reset = document.getElementById('reset')
+    reset.onclick = () => {
+        fetch('/reset')
     }
 </script>
 </html>

@@ -17,6 +17,11 @@ def html_get():
     f.close()
     return "ok"
 
+@app.route('/reset')
+def html_reset():
+    os.system("cp -f vectors.txt.bak vectors.txt")
+    return "ok"
+
 @app.route('/vectors.txt')
 def html_vectors():
     return send_from_directory(app.root_path, 'vectors.txt', mimetype='text/plain')
