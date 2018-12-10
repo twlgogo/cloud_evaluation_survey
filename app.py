@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, send_from_directory
 
 app = Flask(__name__)
 
@@ -19,12 +19,7 @@ def html_get():
 
 @app.route('/vectors.txt')
 def html_vectors():
-    if not os.path.exists("vectors.txt"):
-        return "No vectors.txt"
-    f = open("vectors.txt", "r")
-    body = "\n".join(f.readlines())
-    f.close()
-    return body
+    return send_from_directory(app.root_path, 'vectors.txt', mimetype='text/plain')
 
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 8000.
